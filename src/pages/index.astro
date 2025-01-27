@@ -1,0 +1,205 @@
+---
+import {
+	Icon,
+	type PaginationProps,
+	type ButtonProps
+} from 'webcoreui/astro'
+
+import Portfolio from '@components/Portfolio/Portfolio.astro'
+
+import logo from '../../public/assets/logo.svg?raw'
+
+const layout = {
+    seo: {
+        title: 'Portfolio Template - Webcore',
+        url: 'https://webcoreui.dev/',
+        description: 'A customizable and easy to use template for portfolios.',
+        faviconUrl: '/assets/logo.svg'
+    },
+    menu: {
+        logo: {
+            html: logo
+        }
+    },
+    footer: {
+        logo: {
+            html: logo
+        },
+        columns: [
+            {
+                title: 'Contacts',
+                items: [
+                    { href: 'mailto:lockhart.r@gmail.com', name: 'lockhart.r@gmail.com' }
+                    // { href: 'tel:+44 XXXX XXX XXX', name: '+44 XXXX XXX XXX' }
+                ]
+            }
+        ]
+    }
+}
+
+const hero = {
+    heading: 'Rob Craig 👋',
+    subHeading: 'Full Stack Developer based in London',
+    buttons: [
+        // { text: 'Call Me', theme: 'success' as ButtonProps['theme'] },
+        // { text: 'Email', theme: 'outline' as ButtonProps['theme'] }
+    ],
+    badge: {
+        rounded: true,
+        theme: 'outline' as ButtonProps['theme'],
+        text: '⭐ Top rated developer'
+    },
+    image: {
+        src: '/img/placeholder-hd1.png',
+        alt: 'Banner',
+        width: 500,
+        height: 300
+    }
+}
+
+const aboutMe = {
+    title: 'About',
+    text: 'Returning Developer from Scrum-Master/Dev background. Long term IT professional. Spent past 2+ years tooling up for own SaaS operation. \n With focus on Google Data Analytics Certification and Dev with RubyOnRails; Python; Postgres, GCP. I am looking for a role that would enable me to calibrate my skills while adding significant value.',
+    img: {
+        src: '/img/avatar.png',
+        alt: 'About me',
+        width: 250,
+        height: 250
+    },
+    services: [
+        'Ruby on Rails',
+        'Python',
+        'React/NextJS/Astro',
+        'PostgreSQL',
+        'GCP/AWS',
+        'Data Analytics/Machine Learning'
+    ].map(feature => ({
+        icon: 'circle-check',
+        color: 'var(--w-color-success)',
+        text: feature
+    }))
+}
+
+const myWork = {
+  title: 'Resources',
+  items: 
+    [
+      { 
+        href: 'https://main--scrumming-it.netlify.app/',
+        target: '_blank',
+        img: {
+            src: `/img/placeholder1.png`,
+            alt: 'img',
+            width: 500,
+            height: 250
+        },
+        title: `Rob\'s Blog`,
+        text: 'Portfolio Partner Blog'
+      },
+      { 
+        href: 'https://pfolio-frontend-v1-svc-b572hemhnq-nw.a.run.app/',
+        target: '_blank',
+        img: {
+            src: `/img/placeholder2.png`,
+            alt: 'img',
+            width: 500,
+            height: 250
+        },
+        title: `Portfolio Site`,
+        text: 'Ruby on Rails, React, NextJS, Astro, Python, GCP and more'
+      },
+      { 
+        href: 'https://pfolio-frontend-v2-svc-58856964484.europe-west2.run.app/#portfolios',
+        target: '_blank',
+        img: {
+            src: `/img/placeholder3.png`,
+            alt: 'img',
+            width: 500,
+            height: 250
+        },
+        title: `Sample Projects`,
+        text: 'What have I been working on?'
+      }
+    ]
+}
+
+
+const myWorkOrig = {
+    title: 'Portfolio links & Info',
+    items: Array
+        .from({ length: 3 }, (_, i) => i + 1)
+        .map(i => ({
+            href: '#',
+            img: {
+                src: `/img/placeholder${i}.png`,
+                alt: 'img',
+                width: 500,
+                height: 250
+            },
+            title: `Dashboard: US Population #${i}`,
+            text: 'You can also pass <b>HTML</b> tags to your cards.'
+        }))
+}
+
+const services = {
+    secondary: true,
+    items: [
+        {
+            icon: 'components',
+            title: 'AirBnB Clone - WIP (Ruby on Rails)',
+            text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.',
+            img: {
+                src: `/img/placeholder1.png`,
+                alt: 'img',
+                width: 500,
+                height: 250
+            },
+        }, {
+            icon: 'alert',
+            title: 'Portfolio Site (dJango/React/NextJS) ',
+            text: 'You can create as many items as necessary with icons and an optional title. You can also configure the number of columns.'
+        }, {
+            icon: 'circle-check',
+            title: 'Streamlit Data Apps (Python)',
+            text: 'The <code>text</code> prop also supports formatting through <b>HTML</b> tags to help you customize the appearance of the element.'
+        }
+    ]
+}
+
+const services0 = {
+    secondary: true,
+    items: [
+        {
+            icon: 'components',
+            title: 'Rob\'s Blog TESTER',
+            text: 'Use the <code>GridWithIcons</code> block to organize your list into a grid with icons to enhance clarity and visual appeal.'
+        }, {
+            icon: 'alert',
+            title: 'Rob\s Portfolio Site (React/NextJS) ',
+            text: 'You can create as many items as necessary with icons and an optional title. You can also configure the number of columns.'
+        }, {
+            icon: 'circle-check',
+            title: 'Supports formatting',
+            text: 'The <code>text</code> prop also supports formatting through <b>HTML</b> tags to help you customize the appearance of the element.'
+        }
+    ]
+}
+
+const servicesCta = {
+    text: 'Call Me',
+    theme: 'success' as ButtonProps['theme']
+}
+---
+
+<Portfolio
+    layout={layout}
+    hero={hero}
+    aboutMe={aboutMe}
+    myWork={myWork}
+>
+    <div slot="menu">
+        <!-- <a href="tel:+44 7802 522 257">+XX XXXX XXX XXX</a>
+        <span>•</span> -->
+        <a href="mailto:lockhart.r@gmail.com">lockhart.r@gmail.com</a>
+    </div>
+</Portfolio>
